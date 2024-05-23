@@ -105,7 +105,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           });
 
           if (currentIndex == controller.items.length -1) {
-            Navigator.pushReplacementNamed(context, 'registerScreen');
+            Navigator.pushReplacementNamed(context, 'welcomeScreen');
             SharedPreferences prefs = await SharedPreferences.getInstance();
             await prefs.setBool('first_time', false);
           }

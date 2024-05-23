@@ -4,19 +4,24 @@ class OnboardingData{
 
   List<OnboardingInfo> items = [
     OnboardingInfo(
-        title: "Empower Your Financial Journey",
-        description: "Join My Adviser to take control of your financial future. Get expert advice and grow your wealth securely",
-        image: "assets/images/ma1.png"),
+        title: "Personalized Care Selection",
+        description: "Discover personalized care options tailored to your unique needs and preferences, ensuring you receive the healthcare that fits you best.",
+        image: "assets/images/ob1.jpg"),
 
     OnboardingInfo(
-        title: "Expert Financial Advice",
-        description: "Connect with top-tier advisers for personalized recommendations. Protect your finances with bank-level security.",
-        image: "assets/images/ma2.png"),
+        title: "Seamless Virtual Consultations",
+        description: "Experience seamless virtual consultations with healthcare professionals from the comfort of your home, ensuring convenient access to expert advice and care.",
+        image: "assets/images/ob2.jpg"),
 
     OnboardingInfo(
-        title: "Tailored Financial Services",
-        description: "From insurance to retirement planning, our experts guide you to financial success. Elevate your finances today!",
-        image: "assets/images/ma3.png"),
+        title: "Expanded Patient Reach",
+        description: "Expand your reach with Medicnest, connecting patients with a diverse network of healthcare providers to ensure comprehensive and accessible care.",
+        image: "assets/images/ob3.jpg"),
+
+    OnboardingInfo(
+        title: "Efficient Practice Management",
+        description: "Optimize practice management with Medicnest's efficient tools, streamlining healthcare delivery and enhancing patient care experiences.",
+        image: "assets/images/ob4.jpg"),
 
   ];
 }
