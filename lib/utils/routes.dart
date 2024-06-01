@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../views/home_screen.dart';
 import '../views/onboarding_screen.dart';
+import '../views/otp_screen.dart';
 import '../views/register_screen.dart';
 import '../views/welcome_screen.dart';
 import 'wrapper.dart';
@@ -21,6 +23,11 @@ class RouteGenerator {
 
       case RegisterScreen.id:
         return _route(const RegisterScreen());
+
+      case HomeScreen.id:
+        return _route(const HomeScreen());
+      case OTPScreen.id:
+        return _route(OTPScreen(data: args,));
 
       // case RegisterScreen.id:
       //   return _route(const RegisterScreen());

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "136537596969",
+    "project_id": "medicnest-jaspa",
+    "storage_bucket": "medicnest-jaspa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136537596969:android:f15fd8829f09737f22a838",
+        "android_client_info": {
+          "package_name": "za.co.medicnest.medicnest_pro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATe15S9XzvSkyS8E-5YAeUO_xl93kJZH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

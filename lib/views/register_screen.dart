@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:medicnest_pro/components/custom_button_component.dart';
 
+import '../components/loading_data_component.dart';
+import '../models/hpcsa_model.dart';
+import '../services/firebase_service.dart';
 import '../utils/app_colors.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -13,105 +18,107 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
 
-  final TextEditingController hpcsNumberController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final  FirebaseService _firebaseService = FirebaseService();
+  final TextEditingController registrationNumberController = TextEditingController();
+  bool isLoading = false;
+
+  Future<void> _sendOTP(String hpcsaNumber) async {
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      DocumentSnapshot userSnapshot =
+      await _firebaseService.getUserByHPCSANumber(hpcsaNumber);
+
+      final Hpcsa hpcsa = Hpcsa.fromSnapshot(userSnapshot);
+
+      if (userSnapshot.exists) {
+        Navigator.pushNamed(context, 'otpScreen', arguments: hpcsa );
+
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('User not found for HPCSA number'),
+          backgroundColor: Colors.red,
+        ));
+      }
+    } catch (error) {
+      if (kDebugMode) {
+        print('Error fetching user data: $error');
+      }
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Failed to fetch user data'),
+        backgroundColor: Colors.red,
+      ));
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset('assets/images/logo.png', width: 200,),
-            Text('Register', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
-            Text('Why register'),
-            SizedBox(height: 50,),
-            TextFormField(
-              controller: hpcsNumberController,
-              keyboardType: TextInputType.text,
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.work,
-                  ),
-                  labelText: 'HPCSA Number',
-                  hintText: 'Enter your HPCSA Number',
-                  border: OutlineInputBorder()),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your HPCSA Number';
-                }
-                // Add email format validation if needed
-                return null;
-              },
-            ),
-            SizedBox(height: 20,),
-            TextFormField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.mail,
-                  ),
-                  labelText: 'Email Address',
-                  hintText: 'Enter your email address',
-                  border: OutlineInputBorder()),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your HPCSA Number';
-                }
-                // Add email format validation if needed
-                return null;
-              },
-            ),
-            SizedBox(height: 20,),
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              keyboardType: TextInputType.text,
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(
-                    Icons.lock,
-                  ),
-                  suffixIcon: Icon(Icons.remove_red_eye),
-                  labelText: 'Create Password',
-                  hintText: 'Enter your your password',
-                  border: OutlineInputBorder()),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please create a password';
-                }
-                // Add email format validation if needed
-                return null;
-              },
-            ),
-            SizedBox(height: 20,),
-            const Text(
-              'By clicking CREATE ACCOUNT your agree to MedicNest'
-                  ' Terms and Conditions, Data Usage '
-                  'Policy found at www.medicnest.co.za/legal',
-              style: TextStyle(fontSize: 10),
-            ),
-            SizedBox(height: 50,),
-            CustomElevatedButton(text: 'CREATE ACCOUNT', onPressed: (){}),
-            Center(
-              child: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'loginScreen');
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset('assets/images/logo.png', width: 200,),
+                const Text('Register', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+                const Text('Before we create your account, we need to verify your registration with HPCSA'),
+                const SizedBox(height: 50,),
+                TextFormField(
+                  controller: registrationNumberController,
+                  keyboardType: TextInputType.text,
+                  decoration: const InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.work,
+                      ),
+                      labelText: 'HPCSA Number',
+                      hintText: 'Enter your HPCSA Registration Number',
+                      border: OutlineInputBorder()),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your HPCSA Registration Number';
+                    }
+
+                    return null;
                   },
-                  child: const Text.rich(
-                      TextSpan(text: 'HAVE AN ACCOUNT?', children: [
-                        TextSpan(
-                            text: ' LOGIN',
-                            style: TextStyle(color: AppColors.mainColor))
-                      ]))),
-            )
-          ],
-        ),
-      ),
+                ),
+                const SizedBox(height: 20,),
+                const Text(
+                  'By clicking SEND OTP your agree to MedicNest'
+                      ' Terms and Conditions, Data Usage '
+                      'Policy found at www.medicnest.co.za/legal',
+                  style: TextStyle(fontSize: 10),
+                ),
+                const SizedBox(height: 50,),
+                CustomElevatedButton(text: 'SEND OTP', onPressed: (){
+                  _sendOTP(registrationNumberController.text.trim());
+                }),
+                Center(
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'loginScreen');
+                      },
+                      child: const Text.rich(
+                          TextSpan(text: 'HAVE AN ACCOUNT?', children: [
+                            TextSpan(
+                                text: ' LOGIN',
+                                style: TextStyle(color: AppColors.mainColor))
+                          ]))),
+                )
+              ],
+            ),
+          ),
+          isLoading? const LoadingDataComponent(loadingText: 'Verifying \nHPCSA Registration Number...',): Container()
+        ],
+      )
     );
   }
 }
