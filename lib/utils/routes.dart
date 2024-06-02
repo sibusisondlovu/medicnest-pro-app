@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../views/create_account_screen.dart';
 import '../views/home_screen.dart';
+import '../views/login_screen.dart';
 import '../views/onboarding_screen.dart';
 import '../views/otp_screen.dart';
 import '../views/register_screen.dart';
+import '../views/set_email_password_screen.dart';
 import '../views/welcome_screen.dart';
 import 'wrapper.dart';
 
@@ -28,6 +31,15 @@ class RouteGenerator {
         return _route(const HomeScreen());
       case OTPScreen.id:
         return _route(OTPScreen(data: args,));
+
+      case CreateAccountScreen.id:
+        return _route(const CreateAccountScreen());
+
+      case SetEmailPasswordScreen.id:
+        return _route(SetEmailPasswordScreen(hpcsa: args,));
+
+      case LoginScreen.id:
+        return _route(const LoginScreen());
 
       // case RegisterScreen.id:
       //   return _route(const RegisterScreen());

@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../components/custom_drawer_component.dart';
 import '../components/new_request_component.dart';
 import 'all_requests_page.dart';
 
@@ -27,47 +29,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              title: const Text('Drawer Item 1'),
-              onTap: () {
-                // Navigate to Tab 1
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-            ListTile(
-              title: const Text('Drawer Item 2'),
-              onTap: () {
-                // Navigate to Tab 2
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-            ListTile(
-              title: const Text('Drawer Item 3'),
-              onTap: () {
-                // Navigate to Tab 3
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-          ],
-        ),
+      drawer: CustomDrawer(
+        avatarUrl: '',
+        isAvailable: false,
+        onAvailabilityChanged: (value) {
+          // Implement availability change
+        },
+        professionalName: FirebaseAuth.instance.currentUser!.displayName.toString(),
       ),
-      body: DefaultTabController(
+      body: const DefaultTabController(
         length: 3, // Number of tabs
         child: Column(
           children: [

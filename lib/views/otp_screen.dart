@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:medicnest_pro/components/custom_button_component.dart';
 import 'package:medicnest_pro/models/hpcsa_model.dart';
+import 'package:medicnest_pro/services/firebase_service.dart';
 import 'package:pinput/pinput.dart';
 
 class OTPScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _OTPScreenState extends State<OTPScreen> {
   final pinController = TextEditingController();
   final focusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  final FirebaseService firebaseService = FirebaseService();
 
   @override
   void dispose() {
@@ -45,27 +47,31 @@ class _OTPScreenState extends State<OTPScreen> {
               style: const TextStyle(fontSize: 18.0),
             ),
             const Text(
-              'Dont have access to this number? \nContact HPCSA to update',
+              'Don\'t have access to this number? \nContact HPCSA to update',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 11.0),
             ),
             const SizedBox(height: 20.0),
           Pinput(
+            length: 6,
             controller: pinController,
             // defaultPinTheme: defaultPinTheme,
             // focusedPinTheme: focusedPinTheme,
             //submittedPinTheme: submittedPinTheme,
             validator: (s) {
-              return s == '2222' ? null : 'Pin is incorrect';
+              if (s!.isEmpty) {
+                return 'Please enter OTP';
+              }
+              return null;
             },
             pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
             showCursor: true,
-            onCompleted: (pin) => print(pin),
           ),
             const SizedBox(height: 20.0),
             CustomElevatedButton(
-              onPressed: () {
-                print(pinController.text);
+              onPressed: () async {
+               // await firebaseService.verifyOtp(pinController.text.trim(), widget.data.number);
+              Navigator.pushNamed(context, 'setEmailPasswordScreen',arguments: widget.data);
               },
               text: 'VERIFY OTP',
             ),
