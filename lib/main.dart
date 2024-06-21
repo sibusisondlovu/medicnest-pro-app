@@ -5,7 +5,8 @@ import 'package:medicnest_pro/views/register_screen.dart';
 import 'utils/app_theme.dart';
 import 'utils/routes.dart';
 import 'utils/wrapper.dart';
-import 'views/home_screen.dart';
+
+import 'views/common/video_call_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
       onGenerateRoute: RouteGenerator.generateRoute,
-      initialRoute: RegisterScreen.id,
+      initialRoute: VideoCallScreen.id,
     );
   }
 }

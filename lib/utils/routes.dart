@@ -1,13 +1,16 @@
+
+
 import 'package:flutter/material.dart';
 
+import '../views/common/login_screen.dart';
+import '../views/common/onboarding_screen.dart';
+import '../views/common/video_call_screen.dart';
+import '../views/common/welcome_screen.dart';
 import '../views/create_account_screen.dart';
-import '../views/home_screen.dart';
-import '../views/login_screen.dart';
-import '../views/onboarding_screen.dart';
+import '../views/doctor/home_screen.dart';
 import '../views/otp_screen.dart';
 import '../views/register_screen.dart';
 import '../views/set_email_password_screen.dart';
-import '../views/welcome_screen.dart';
 import 'wrapper.dart';
 
 class RouteGenerator {
@@ -40,6 +43,9 @@ class RouteGenerator {
 
       case LoginScreen.id:
         return _route(const LoginScreen());
+
+      case VideoCallScreen.id:
+        return _route(const VideoCallScreen());
 
       // case RegisterScreen.id:
       //   return _route(const RegisterScreen());

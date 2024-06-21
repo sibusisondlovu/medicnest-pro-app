@@ -34,7 +34,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       final Hpcsa hpcsa = Hpcsa.fromSnapshot(userSnapshot);
 
       if (userSnapshot.exists) {
-       // await _firebaseService.sendVerificationCode(hpcsa.number);
+        await _firebaseService.sendVerificationCode(hpcsa.number);
         Navigator.pushNamed(context, 'otpScreen', arguments: hpcsa );
 
       } else {

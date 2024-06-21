@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../components/custom_drawer_component.dart';
-import '../components/new_request_component.dart';
+import '../../components/custom_drawer_component.dart';
 import 'all_requests_page.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../components/new_request_component.dart';
-import '../models/request_model.dart';
-import '../services/firebase_service.dart';
+import '../../components/new_request_component.dart';
+import '../../models/request_model.dart';
+import '../../services/firebase_service.dart';
 
 class AllRequestsPage extends StatefulWidget {
   const AllRequestsPage({super.key});

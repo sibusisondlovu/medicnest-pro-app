@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../views/onboarding_screen.dart';
+import '../views/common/onboarding_screen.dart';
 import 'app_colors.dart';
 
 class Wrapper extends StatefulWidget {
