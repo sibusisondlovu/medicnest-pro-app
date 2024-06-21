@@ -11,7 +11,7 @@ import '../views/doctor/home_screen.dart';
 import '../views/otp_screen.dart';
 import '../views/register_screen.dart';
 import '../views/set_email_password_screen.dart';
-import 'wrapper.dart';
+import '../utils/wrapper.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

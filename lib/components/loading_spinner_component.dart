@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
+import '../config/strings.dart';
 
 class CustomLoadingSpinner extends StatelessWidget {
   const CustomLoadingSpinner({super.key});
@@ -13,7 +13,7 @@ class CustomLoadingSpinner extends StatelessWidget {
           children: [
             CircularProgressIndicator(
               strokeWidth: 2, // Set stock width to 1
-              valueColor: AlwaysStoppedAnimation<Color>(AppColors.mainColor), // Set color to primary
+              valueColor: AlwaysStoppedAnimation<Color>(Strings.mainColor), // Set color to primary
             ),
             SizedBox(height: 15,),
             Text('Please wait...', style: TextStyle(fontSize: 10),)

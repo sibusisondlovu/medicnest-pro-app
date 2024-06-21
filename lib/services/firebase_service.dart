@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:medicnest_pro/models/hpcsa_model.dart';
-import 'package:medicnest_pro/utils/app_colors.dart';
+import 'package:medicnest_pro/config/strings.dart';
 import '../models/request_model.dart';
 
 class FirebaseService {
@@ -65,7 +65,7 @@ class FirebaseService {
 
   Future<void> sendVerificationCode(String cellNumber) async {
     try {
-      final Uri uri = Uri.parse('${AppColors.cloudFunctionsUrl}/sendVerificationCode');
+      final Uri uri = Uri.parse('${Strings.cloudFunctionsUrl}/sendVerificationCode');
 
       if (cellNumber.startsWith('0')) {
 
@@ -101,7 +101,7 @@ class FirebaseService {
 
   Future<void> verifyOtp(String verificationCode, String phoneNumber) async {
     try {
-      final Uri uri = Uri.parse('${AppColors.cloudFunctionsUrl}/verifyCode');
+      final Uri uri = Uri.parse('${Strings.cloudFunctionsUrl}/verifyCode');
 
       if (phoneNumber.startsWith('0')) {
 

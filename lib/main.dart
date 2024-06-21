@@ -2,8 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:medicnest_pro/views/register_screen.dart';
-import 'utils/app_theme.dart';
-import 'utils/routes.dart';
+import 'config/theme.dart';
+import 'config/routes.dart';
 import 'utils/wrapper.dart';
 
 import 'views/common/video_call_screen.dart';

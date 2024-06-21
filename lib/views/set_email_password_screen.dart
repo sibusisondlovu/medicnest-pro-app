@@ -4,7 +4,7 @@ import 'package:medicnest_pro/models/hpcsa_model.dart';
 import '../components/custom_button_component.dart';
 import '../components/loading_spinner_component.dart';
 import '../services/firebase_service.dart';
-import '../utils/app_colors.dart';
+import '../config/strings.dart';
 
 class SetEmailPasswordScreen extends StatefulWidget {
   const SetEmailPasswordScreen({super.key, required this.hpcsa});
@@ -284,7 +284,7 @@ class _SetEmailPasswordScreenState extends State<SetEmailPasswordScreen> {
                         children: [
                           TextSpan(
                               text: ' LOGIN',
-                              style: TextStyle(color: AppColors.mainColor))
+                              style: TextStyle(color: Strings.mainColor))
                         ]))),
               )
             ],

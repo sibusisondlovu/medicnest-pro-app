@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
+import '../config/strings.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String avatarUrl;
@@ -27,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
             child: DrawerHeader(
 
                 decoration: const BoxDecoration(
-                  color: AppColors.mainColor,
+                  color: Strings.mainColor,
                 ),
                 child: Column(
                   children: [

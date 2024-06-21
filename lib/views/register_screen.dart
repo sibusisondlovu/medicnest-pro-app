@@ -6,7 +6,7 @@ import 'package:medicnest_pro/components/custom_button_component.dart';
 import '../components/loading_data_component.dart';
 import '../models/hpcsa_model.dart';
 import '../services/firebase_service.dart';
-import '../utils/app_colors.dart';
+import '../config/strings.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -111,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextSpan(text: 'HAVE AN ACCOUNT?', children: [
                             TextSpan(
                                 text: ' LOGIN',
-                                style: TextStyle(color: AppColors.mainColor))
+                                style: TextStyle(color: Strings.mainColor))
                           ]))),
                 )
               ],

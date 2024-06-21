@@ -2,19 +2,19 @@
 
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import 'strings.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
-    primaryColor: AppColors.mainColor,
-    hintColor: AppColors.ascentColor,
+    primaryColor: Strings.mainColor,
+    hintColor: Strings.ascentColor,
     scaffoldBackgroundColor: Colors.white,
 
   );
 
   static ThemeData darkTheme = ThemeData(
-    primaryColor: AppColors.mainColor,
-    hintColor: AppColors.ascentColor,
+    primaryColor: Strings.mainColor,
+    hintColor: Strings.ascentColor,
     scaffoldBackgroundColor: Colors.white,
   );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors.dart';
+import '../config/strings.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;
@@ -20,7 +20,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.mainColor,
+          backgroundColor: Strings.mainColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -58,7 +58,7 @@ class CustomOutlinedButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: AppColors.mainColor),
+          side: const BorderSide(color: Strings.mainColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -68,7 +68,7 @@ class CustomOutlinedButton extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-              color: AppColors.mainColor,
+              color: Strings.mainColor,
               fontSize: 16,
             ),
           ),

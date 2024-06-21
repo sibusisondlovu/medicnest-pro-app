@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../views/common/onboarding_screen.dart';
-import 'app_colors.dart';
+import '../config/strings.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({super.key});
@@ -20,7 +20,7 @@ class _WrapperScreenState extends State<Wrapper> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Show loading indicator while checking
-          return const Scaffold(body: Center(child: CircularProgressIndicator(color: AppColors.mainColor, strokeWidth: 2,)));
+          return const Scaffold(body: Center(child: CircularProgressIndicator(color: Strings.mainColor, strokeWidth: 2,)));
         } else if (snapshot.hasError) {
           // Handle any errors
           return Scaffold(body: Center(child: Text('Error: ${snapshot.error}')));

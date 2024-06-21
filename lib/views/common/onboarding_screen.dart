@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../utils/app_colors.dart';
-import '../../utils/onboarding_data.dart';
+import '../../config/strings.dart';
+import '../../data/onboarding_data.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -53,7 +53,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     const SizedBox(height: 15),
                     //Titles
                     Text(controller.items[currentIndex].title,
-                      style: const TextStyle(fontSize: 25,color: AppColors.mainColor,fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 25,color: Strings.mainColor,fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,),
 
                     //Description
@@ -79,7 +79,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           margin: const EdgeInsets.symmetric(horizontal: 2),
           decoration:   BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            color: currentIndex == index? AppColors.mainColor : Colors.grey,
+            color: currentIndex == index? Strings.mainColor : Colors.grey,
           ),
           height: 7,
           width: currentIndex == index? 30 : 7,
@@ -95,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       height: 55,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: AppColors.mainColor
+          color: Strings.mainColor
       ),
 
       child: TextButton(
